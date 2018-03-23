@@ -14,6 +14,13 @@
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "html",
+        "conversor",
+        "javascript",
+        "string",
+        "converter"
+    ],
     "activationEvents": [
         "onCommand:extension.convertHTMLtoString"
     ],

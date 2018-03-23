@@ -2,12 +2,13 @@
     "name": "html-to-javascript-string",
     "displayName": "html to javascript string",
     "description": "Converts html code to javascript string",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "evileumas",
     "repository": {
         "type": "git",
         "url": "https://github.com/evileumas/html-to-javascript-vscode.git"
     },
+    "icon": "./icon/html-to-javascript-vscode.png",
     "engines": {
         "vscode": "^1.21.0"
     },
@@ -46,7 +47,7 @@
                 "when": "editorHasSelection",
                 "command": "extension.convertHTMLtoString",
                 "group": "modification",
-                "key": "ctrl+h ctrl+j" 
+                "key": "ctrl+h ctrl+j"
             }
         ]
     },

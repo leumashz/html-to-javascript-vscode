@@ -15,17 +15,21 @@ export function activate(context: vscode.ExtensionContext) {
         let range = new vscode.Range(selection.start.line, selection.start.character, selection.end.line, selection.end.character);
         let text = editor.document.getText(selection);
         var newString: any;
-        let stringWithScapeApostrophes: string = text
+        let scapedString: string = text
             .replace(/'/g, "\\'");
 
-        newString = stringWithScapeApostrophes.toString().split("\n");
+        newString = scapedString.toString().split("\n");
+        vscode.debug.activeDebugConsole.appendLine(newString);
 
         newString = newString
-            .map((line: string, index: number, array: [any]) => {
-                return "'" + line + "'" + (index === (array.length - 1) ? " \n" : " + \n");
-            })
-            .reduce((previousLine: string, currentLine: string) => { return previousLine + currentLine; }, "");
-            
+            .reduce((previousLine: string, currentLine: string, index: number, array: [any]) => {
+                return index === 0 ? "'" + currentLine.trim() + "'\n" :
+                    index === (array.length - 1) ?
+                        previousLine + "'" + currentLine.trim() + "'" :
+                        previousLine + "'" + currentLine.trim() + "'+ \n";
+            }, "");
+
+
         editor.edit(function (editBuilder: vscode.TextEditorEdit) {
             editBuilder.replace(range, newString);
         }, );

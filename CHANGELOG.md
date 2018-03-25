@@ -13,3 +13,6 @@
 ## [0.0.4]
 - Removed spaces from start and end of lines
 - Removed line feed (\n) from first line
+
+## [0.0.5]
+- Refactor of code to improve organization (dev)

@@ -1,6 +1,7 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import JavascriptConversor from './JavascriptConversor';
 
 export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerTextEditorCommand('extension.convertHTMLtoString', () => {
@@ -14,21 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
         let selection = editor.selection;
         let range = new vscode.Range(selection.start.line, selection.start.character, selection.end.line, selection.end.character);
         let text = editor.document.getText(selection);
-        var newString: any;
-        let scapedString: string = text
-            .replace(/'/g, "\\'");
-
-        newString = scapedString.toString().split("\n");
-        vscode.debug.activeDebugConsole.appendLine(newString);
-
-        newString = newString
-            .reduce((previousLine: string, currentLine: string, index: number, array: [any]) => {
-                return index === 0 ? "'" + currentLine.trim() + "'\n" :
-                    index === (array.length - 1) ?
-                        previousLine + "'" + currentLine.trim() + "'" :
-                        previousLine + "'" + currentLine.trim() + "'+ \n";
-            }, "");
-
+        const jsConverTool = new JavascriptConversor();
+        let newString = jsConverTool.convert(text);
 
         editor.edit(function (editBuilder: vscode.TextEditorEdit) {
             editBuilder.replace(range, newString);

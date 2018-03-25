@@ -8,4 +8,6 @@ You can select your html text and use the shortcut ctrl+h ctrl+J
 * Add support to format the resulting string
 * Add support to convert javascript strings to html code
 
+[Change log](https://github.com/evileumas/html-to-javascript-vscode/blob/master/CHANGELOG.md)
+
 ![converting and html text to javascript string](https://raw.githubusercontent.com/evileumas/html-to-javascript-vscode/master/gif/htmltostring.gif)

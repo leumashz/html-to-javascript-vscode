@@ -2,7 +2,7 @@
     "name": "html-to-javascript-string",
     "displayName": "html to javascript string",
     "description": "Converts html code to javascript string",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "publisher": "evileumas",
     "repository": {
         "type": "git",

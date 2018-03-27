@@ -7,8 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerTextEditorCommand('extension.convertHTMLtoString', () => {
 
         let editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            vscode.window.showErrorMessage('No html selected');
+        if (!editor) {            
             return;
         }
 

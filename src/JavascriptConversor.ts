@@ -9,10 +9,23 @@ export default class HtmlConversor extends TextConversor {
 
         return newString = cleanString
             .reduce((previousLine: string, currentLine: string, index: number, array: Array<string>) => {
-                return index === 0 ? "'" + currentLine.trim() + "'\n" :
-                    index === (array.length - 1) ?
-                        previousLine + "'" + currentLine.trim() + "'" :
-                        previousLine + "'" + currentLine.trim() + "'+ \n";
+                return this.processLines(currentLine, previousLine, index, array.length);
             }, "");
+    }
+
+    private processLines(currentLine: string, previousLine: string, index: number, stringLength: number) {
+        if (index === 0 && stringLength === 1) {
+            return "'" + currentLine.trim() + "'";
+        }
+
+        if (index === 0 && stringLength > 1) {
+            return "'" + currentLine.trim() + "'+\n";
+        }
+
+        if (index === stringLength - 1) {
+            return previousLine + "'" + currentLine.trim() + "'";
+        } else {
+            return previousLine + "'" + currentLine.trim() + "'+\n";
+        }
     }
 }
